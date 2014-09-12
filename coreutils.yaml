@@ -1,0 +1,58 @@
+Name: coreutils
+Summary: "The GNU core utilities: a set of tools commonly used in shell scripts"
+Version: 8.23
+Release: 1
+Epoch: 1
+License: GPLv3+
+Group: System/Base
+URL: http://www.gnu.org/software/coreutils/
+Description: |
+  These are the GNU core utilities.  This package is the combination of
+  the old GNU fileutils, sh-utils, and textutils packages.
+Sources:
+    - "%{name}-%{version}.tar.xz"
+SetupOptions: -q -n src
+
+PkgBR:
+    - automake
+    - gmp-devel
+    - libacl-devel
+    - libattr-devel
+    - libcap-devel
+    - gettext-devel
+    - perl
+    - xz
+    - pam-devel
+PkgConfigBR:
+    - openssl
+Provides:
+    - mktemp 
+    - fileutils = %{version}-%{release}
+    - sh-utils = %{version}-%{release}
+    - stat = %{version}-%{release}
+    - textutils = %{version}-%{release}
+Obsoletes:
+    - fileutils <= 4.1.9
+    - sh-utils <= 2.0.12
+    - stat <= 3.3
+    - textutils <= 2.0.21
+Conflicts:
+    - glibc < 2.2
+    - tetex < 1.0.7-66
+    - util-linux < 2.22.2
+
+Configure: configure
+ConfigOptions:
+    - --libexecdir=%{_libdir}
+    - --enable-no-install-program=groups,hostname,kill,uptime
+    - --with-openssl
+
+Files:
+    - "%doc COPYING NEWS README THANKS"
+    - "%{_bindir}/*"
+    - "/bin/*"
+    - "%{_sbindir}/chroot"
+    - "%{_libdir}/%{name}"
+    - "%doc %{_infodir}/coreutils.info*.gz"
+    - "%doc %{_mandir}/man1/*.1.gz"
+    - "%dir %{_datadir}/locale/*/LC_TIME"
