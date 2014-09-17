@@ -1,7 +1,7 @@
 Name: coreutils
 Summary: "The GNU core utilities: a set of tools commonly used in shell scripts"
 Version: 8.23
-Release: 2
+Release: 3
 Epoch: 1
 License: GPLv3+
 Group: System/Base
@@ -23,8 +23,6 @@ PkgBR:
     - perl
     - xz
     - pam-devel
-PkgConfigBR:
-    - openssl
 Provides:
     - mktemp 
     - fileutils = %{version}-%{release}
@@ -45,7 +43,6 @@ Configure: configure
 ConfigOptions:
     - --libexecdir=%{_libdir}
     - --enable-no-install-program=groups,hostname,kill,uptime
-    - --with-openssl
 
 Files:
     - "%doc COPYING NEWS README THANKS"

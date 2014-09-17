@@ -16,14 +16,13 @@ Name:       coreutils
 
 Summary:    The GNU core utilities: a set of tools commonly used in shell scripts
 Version:    8.23
-Release:    2
+Release:    3
 Epoch:      1
 Group:      System/Base
 License:    GPLv3+
 URL:        http://www.gnu.org/software/coreutils/
 Source0:    %{name}-%{version}.tar.xz
 Source100:  coreutils.yaml
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  libacl-devel
@@ -64,8 +63,7 @@ AUTOPOINT=true autoreconf -fi
 
 %configure --disable-static \
     --libexecdir=%{_libdir} \
-    --enable-no-install-program=groups,hostname,kill,uptime \
-    --with-openssl
+    --enable-no-install-program=groups,hostname,kill,uptime
 
 make %{?_smp_mflags}
 
