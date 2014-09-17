@@ -16,7 +16,7 @@ Name:       coreutils
 
 Summary:    The GNU core utilities: a set of tools commonly used in shell scripts
 Version:    8.23
-Release:    1
+Release:    2
 Epoch:      1
 Group:      System/Base
 License:    GPLv3+
@@ -82,7 +82,7 @@ rm -rf %{buildroot}
 
 # let be compatible with old fileutils, sh-utils and textutils packages :
 mkdir -p $RPM_BUILD_ROOT{/bin,%_bindir,%_sbindir,/sbin}
-for f in basename cat chgrp chmod chown cp cut date dd df echo env false link ln ls mkdir mknod mv nice pwd rm rmdir sleep sort stty sync touch true uname unlink
+for f in basename cat chgrp chmod chown cp cut date dd df echo env false link ln ls mkdir mknod mktemp mv nice pwd rm rmdir sleep sort stty sync touch true uname unlink
 do
 mv $RPM_BUILD_ROOT{%_bindir,/bin}/$f
 done
